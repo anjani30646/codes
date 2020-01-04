@@ -1,0 +1,37 @@
+You are given an integer I in the following format :
+You are given two integers P and Q.
+Integer I can be obtained by appending Q instances of P together.
+For example, if P = 619 and Q = 4, then I = 619619619619.
+
+Sample Input 0
+148 3
+
+Sample Output 0
+3
+
+
+
+#include <cmath>
+#include <cstdio>
+#include <vector>
+#include <iostream>
+#include <algorithm>
+using namespace std;
+
+int main() 
+{
+    string s;
+    cin >> s;
+    long int n;
+    cin >> n;
+    long int sum=0;
+    for(long int i=0;i<s.length();i++)
+        sum=sum+s[i]-48;
+    long int sum1=sum*n;
+    if(sum1%9==0)
+        cout << "9";
+    else
+        cout << sum1%9;
+    return 0;
+}
+
