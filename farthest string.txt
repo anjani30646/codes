@@ -1,0 +1,61 @@
+Farthest String 1
+We define the Palindromic Distance of a String as the minimum number of characters that need to be modified in order to turn the String into a palindrome.
+
+For example :
+
+"cook" -> "cooc" (Palindrome),
+Hence Distance("cook") = 1.
+
+"fluffy" -> "flufff" -> "ffufff" -> "ffffff" (Palindrome),
+Hence Distance("fluffy") = 3.
+
+Now, you are given N number of strings, and your task is to find out which string has the farthest Distance from being a palindrome and print it.
+
+Sample Input 0
+
+7
+philosopher
+chamber
+prisoner
+goblet
+phoenix
+halfbloodprince
+deathlyhallows
+
+Sample Output 0
+halfbloodprince
+
+
+
+CODE:
+
+#include<bits/stdc++.h>
+using namespace std;
+
+
+int main() 
+{
+    int n,i;
+    cin >> n;
+    string s;
+    string s1;
+    int max=INT_MIN;
+    while(n--)
+    {
+        cin >> s;
+        int count=0;
+        int length=s.length();
+        for(i=0;i<length/2;i++)
+        {
+            if(s[i]!=s[length-i-1])
+                count++;
+        }
+        if(max<count)
+        {
+            max=count;
+            s1=s;
+        }
+    }
+        cout << s1;
+    return 0;
+}
