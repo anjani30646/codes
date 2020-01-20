@@ -1,0 +1,45 @@
+count all the distinct subsequence
+
+Input:
+3
+3
+ggg
+efg
+gfg
+
+Output:
+3
+7
+5
+
+
+#include <iostream>
+using namespace std;
+
+int main() 
+{
+    int t;
+    cin >> t;
+    while(t--)
+    {
+        int l;
+        cin >> l;
+        string s;
+        cin >> s;
+        int a[26]={0},i;
+        for(i=0;i<l;i++)
+        {
+            a[s[i]-'a']++;
+        }
+        int count=1;
+        for(i=0;i<26;i++)
+        {
+            if(a[i]>0)
+            {
+                count =(count * (a[i]+1))%1000000007;
+            }
+        }
+        cout << count-1 << endl;
+    }
+	return 0;
+}
