@@ -1,0 +1,61 @@
+Longest palindrome substring
+
+Sample Input 1:
+5
+abbba
+Sample Output 1:
+5
+abbba
+Sample Input 2:
+12
+abcbcabbacba
+Sample Output 2:
+8
+bcabbacb
+
+
+#include <iostream>
+using namespace std;
+
+int main() {
+    int n;
+    cin >> n;
+    string s;
+    cin >> s;
+    int i,l,h;
+    int max=1,n1=0;
+    for(i=0;i<n-1;i++)
+    {
+        l=i;
+        h=i+1;
+        while(l>=0 && h<n && s[l]==s[h])
+        {
+            if(h-l>=max)
+            {
+                n1=l;
+                max=h-l;
+            }
+            l--;
+            h++;
+        }
+        l=i;
+        h=i+2;
+         while(l>=0 && h<n && s[l]==s[h])
+        {
+            if(h-l>=max)
+            {
+                n1=l;
+                max=h-l;
+            }
+            l--;
+            h++;
+        }
+    }
+    cout << max+1;
+     cout << endl;
+    for(i=n1;i<=n1+max;i++)
+    {
+        cout << s[i];
+    }
+	return 0;
+}
