@@ -1,0 +1,47 @@
+number of palindromes
+print all the palindromes
+
+input:
+3
+aba
+
+output:
+4
+
+#include<bits/stdc++.h>
+using namespace std;
+
+bool palim(string s)
+{
+    int l=s.length();
+    for(int i=0;i<l/2;i++)
+    {
+        if(s[i]!=s[l-i-1])
+            return false;
+    }
+    return true;
+}
+
+int main()
+{
+    int l,c=0;
+    cin>>l;
+    string s;
+    cin>>s;
+    int len=l;
+    while(len>0)
+    {
+        for(int i=0;i+len<=l;i++)
+        {
+            string temp=s.substr(i,len);
+            cout << temp << endl;
+            if(palim(temp))
+            {
+                c++;
+            }
+        }
+        len--;
+    }
+    cout<<c;
+    return 0;
+}
