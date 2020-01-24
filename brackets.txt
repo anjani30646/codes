@@ -1,0 +1,49 @@
+print the balanced brackets
+
+input:
+(()())(
+output:
+(()())
+
+#include <iostream>
+using namespace std;
+
+int top=-1;
+
+int main()
+{
+   string s;
+   cin >> s;
+   int l=s.length();
+   int a[l],i;
+   char b[l];
+   for(i=0;i<l;i++)
+   {
+       b[i]='0';
+   }
+    for(i=0;i<l;i++)
+    {
+        if(s[i]=='(')
+        {
+            top++;
+            a[top]=i;
+        }
+        else if(s[i]==')' && top !=-1)
+        {  
+            b[i]=')';
+            b[a[top]]='(';
+            top--;
+           
+         }
+    //      for(int k=0;k<l;k++)
+    // {
+    
+    //         cout << b[k];
+    // }cout<<endl;
+    }
+    for(i=0;i<l;i++)
+    {
+           if(b[i]!='0')
+            cout << b[i];
+    }
+}
