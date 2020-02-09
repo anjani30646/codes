@@ -1,0 +1,55 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+int num(string s)
+{
+    int l=s.length();
+    int c1=0,c2=0;
+    for(int i=0;i<l;i++)
+    {
+        if(s[i]=='0')
+            c1++;
+        else
+            c2++;
+    }
+    if(c1==c2)
+        return 1;
+    else
+        return 0;
+}
+
+int main() 
+{
+    int t;
+    cin >> t;
+    while(t--)
+    {
+        string s,t;
+        cin >> s;
+        int l=s.length();
+        int l1=l;
+        int f=0;
+        while(l1>0)
+        {
+            for(int i=0;i+l1<l;i++)
+            {
+                t=s.substr(i,l1);
+                //cout << t << endl;
+                if(num(t))
+                {
+                    //cout << t << endl;
+                    f=1;
+                    break;
+                }
+            }
+            if(f==1)
+                break;
+            l1--;
+        }
+        if(f==1)
+            cout << t.length() << endl;
+        else
+            cout << "NO" << endl;
+        
+    }
+}
