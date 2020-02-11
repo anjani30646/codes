@@ -1,0 +1,94 @@
+
+Sample Input 0
+
+10
+12 3 5 11 15 5 4 4 8 15 
+Sample Output 0
+
+12 3 5 5 4 4 11 8 15 15 
+3 4 4 5 5 8 11 12 15 15 
+4 4 5 8 11 5 3 15 15 12 
+
+
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <stdbool.h>
+#include <math.h>
+#define scan(x) scanf(" %d", &x)
+struct TreeNode 
+{
+    int x;
+    struct TreeNode* L;
+    struct TreeNode* R;
+};
+typedef struct TreeNode TreeNode;
+
+TreeNode* newNode(int val) 
+{
+    TreeNode* node = (TreeNode*) malloc(sizeof(TreeNode));
+    node->x = val;
+    node->L = node->R = NULL;
+    return node;
+}
+
+TreeNode* insert(TreeNode* node, int val)
+{
+    if (node == NULL) 
+        return newNode(val);
+    if (val <= node->x) 
+        node->L = insert(node->L, val);
+    else 
+        node->R = insert(node->R, val);
+    return node;
+}
+
+void preorder(TreeNode* Root)
+{
+    TreeNode *temp=Root;
+    if(temp!=NULL)
+    {
+      printf("%d ",temp->x);
+      preorder(temp->L);
+      preorder(temp->R);
+    }
+}
+
+void inorder(TreeNode* Root)
+{
+    TreeNode *temp=Root;
+    if(temp!=NULL)
+    {
+      inorder(temp->L);
+      printf("%d ",temp->x);
+      inorder(temp->R);
+    }
+}
+
+void postorder(TreeNode* Root)
+{
+    TreeNode *temp=Root;
+    if(temp!=NULL)
+    {
+      postorder(temp->L);
+      postorder(temp->R);
+      printf("%d ",temp->x);
+  }
+}
+
+int main() 
+{
+    int val, N; scan(N);
+    TreeNode* Root = NULL;
+    for (int i = 1; i <= N; i++)
+    {
+        scan(val);
+        Root = insert(Root, val);
+    }
+    preorder(Root);
+    printf("\n");
+    inorder(Root);
+    printf("\n");
+    postorder(Root);
+}

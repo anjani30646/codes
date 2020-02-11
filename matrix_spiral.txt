@@ -1,0 +1,47 @@
+#include<bits/stdc++.h>
+using namespace std;
+int main()
+{
+    int m,n;
+    cin >> m >> n;
+    int a[m][n];
+    int i,j;
+    for(i=0;i<m;i++)
+    {
+        for(j=0;j<n;j++)
+        {
+            cin >> a[i][j];
+        }
+    }
+    int r=0,c=0;
+    while(r<m && c<n)
+    {
+        for(i=c;i<n;i++)
+        {
+            cout << a[r][i] << " ";
+        }
+        r++;
+        for(i=r;i<m;i++)
+        {
+            cout << a[i][n-1] << " ";
+        }
+        n--;
+        if(r<m)
+        {
+        for(i=n-1;i>=0;i--)
+        {
+            cout << a[m-1][i] << " ";
+        }
+        m--;
+        }
+        
+        if(c<n)
+        {
+        for(i=m-1;i>=r;i--)
+        {
+            cout << a[i][c]<< " ";
+        }
+        c++;
+        }
+    }
+}
