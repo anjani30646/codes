@@ -1,0 +1,56 @@
+Sample Input 0
+banana
+ana
+
+Sample Output 0
+2
+
+Sample Input 1
+a
+adamant
+
+Sample Output 1
+3
+
+#include <cmath>
+#include <cstdio>
+#include <vector>
+#include <iostream>
+#include <algorithm>
+using namespace std;
+
+
+int main()
+{
+    string s1,s2;
+    cin >> s1 >> s2;
+    int l1=s1.length();
+    int l2=s2.length();
+    int c=0;
+    if(l2<l1)
+    {
+        int n=l1-l2;
+        for(int i=0;i<=n;i++)
+        {
+           string t=s1.substr(i,l2);
+            //cout << t << endl;
+            if(t==s2)
+                c++;
+        }
+        cout << c ;
+    }
+    else
+    {
+        int n=l2-l1;
+        for(int i=0;i<=n;i++)
+        {
+           string t=s2.substr(i,l1);
+            //cout << t << endl;
+            if(t==s1)
+                c++;
+        }
+        cout << c ;
+    }
+    return 0;
+}
+
